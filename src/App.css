@@ -1,0 +1,472 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #202124;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logo-icon {
+  font-size: 28px;
+}
+
+
+/* Search */
+
+.search-container {
+  width: 45%;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 13px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #f1f3f4;
+
+  font-size: 16px;
+  outline: none;
+}
+
+
+/* Navigation buttons */
+
+.nav-actions button {
+  border: none;
+  background: transparent;
+
+  font-size: 22px;
+  cursor: pointer;
+}
+
+
+/* =========================
+   CREATE NOTE
+========================= */
+
+.create-note {
+  width: 600px;
+  max-width: 90%;
+
+  margin: 35px auto;
+
+  background-color: white;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.create-note input,
+.create-note textarea {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  font-size: 16px;
+
+  margin-bottom: 12px;
+}
+
+.create-note input {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.create-note textarea {
+  min-height: 100px;
+
+  resize: vertical;
+}
+
+
+/* Controls */
+
+.note-controls {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-controls select {
+  padding: 8px;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.note-controls button {
+  padding: 9px 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #fbbc04;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+   NOTES GRID
+========================= */
+
+.notes-grid {
+  width: 90%;
+
+  margin: 0 auto 40px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(220px, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .search-container {
+    width: 45%;
+  }
+
+  .search-container input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .create-note {
+    margin-top: 20px;
+  }
+
+  .notes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 94%;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .navbar {
+    height: auto;
+
+    padding: 12px;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    width: 30%;
+  }
+
+  .search-container {
+    width: 60%;
+  }
+
+  .nav-actions {
+    width: 100%;
+
+    text-align: right;
+  }
+
+  .create-note {
+    width: 94%;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   NOTE CARDS
+========================= */
+
+.note {
+  background-color: white;
+  padding: 18px;
+  border-radius: 10px;
+  min-height: 150px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Note colours */
+
+.note.yellow {
+  background-color: #fff475;
+}
+
+.note.green {
+  background-color: #ccff90;
+}
+
+.note.blue {
+  background-color: #a7ffeb;
+}
+
+.note.pink {
+  background-color: #fdcfe8;
+}
+
+/* Note text */
+
+.note h3 {
+  margin-bottom: 10px;
+}
+
+.note p {
+  line-height: 1.5;
+  color: #555;
+  white-space: pre-wrap;
+}
+
+/* Delete button */
+
+.delete-button {
+  align-self: flex-end;
+  margin-top: 15px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* =========================
+   COLOUR PICKER
+========================= */
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.color-button:hover {
+  transform: scale(1.15);
+}
+
+/* Colours */
+
+.color-button.default {
+  background-color: #ffffff;
+  border: 1px solid #bdbdbd;
+}
+
+.color-button.yellow {
+  background-color: #fff475;
+}
+
+.color-button.green {
+  background-color: #ccff90;
+}
+
+.color-button.blue {
+  background-color: #a7ffeb;
+}
+
+.color-button.pink {
+  background-color: #fdcfe8;
+}
+
+/* Selected colour */
+
+.color-button.selected {
+  border: 3px solid #5f6368;
+  transform: scale(1.15);
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.app.dark-mode {
+  background-color: #202124;
+  color: #e8eaed;
+  min-height: 100vh;
+}
+
+.app.dark-mode .navbar {
+  background-color: #292a2d;
+  border-bottom-color: #444;
+}
+
+.app.dark-mode .search-container input {
+  background-color: #3c4043;
+  color: #ffffff;
+}
+
+.app.dark-mode .search-container input::placeholder {
+  color: #bdc1c6;
+}
+
+.app.dark-mode .create-note {
+  background-color: #292a2d;
+  color: #e8eaed;
+}
+
+.app.dark-mode .create-note input,
+.app.dark-mode .create-note textarea {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.app.dark-mode .create-note input::placeholder,
+.app.dark-mode .create-note textarea::placeholder {
+  color: #bdc1c6;
+}
+
+.app.dark-mode .nav-actions button {
+  color: #ffffff;
+}
+
+/* =========================
+   SEARCH POLISH
+========================= */
+
+.search-container {
+  flex: 1;
+  max-width: 600px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f1f3f4;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-container input:focus {
+  box-shadow: 0 0 0 2px #4285f4;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .logo span:last-child {
+    display: none;
+  }
+
+  .search-container {
+    max-width: none;
+  }
+
+  .search-container input {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .create-note {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+    padding: 10px 16px;
+  }
+
+  .note-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .color-picker {
+    justify-content: center;
+  }
+}
